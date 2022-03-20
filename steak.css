@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    background: pink;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canvas {
+    display: flex;
+    width: 600px;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.steak {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    --steak_body_color: #733b24;
+    --steak_darker_color: #381c12;
+    --offset_1: 45px;
+    --offset_2: 55px;
+    transform-origin: 50% 120%;
+    animation: pulse 0.5s ease-in-out infinite;
+    z-index: 1;
+}
+
+.herb {
+    position: relative;
+    display: flex;
+    z-index: 2;
+    top: 125px;
+    left: 25px;
+    transform: rotate(60deg) scaleX(1.2);
+
+}
+
+.leaf {
+    position: absolute;
+    aspect-ratio: 1/1.5;
+    width: 35px;
+    /*outline: 3px solid #298f29;*/
+    background: #1b9f1b;
+    border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    transform-origin: 50% 100%;
+    transform: translateX(-50%);
+}
+
+.stem {
+    position: relative;
+    width: 5px;
+    height: 70px;
+    background: #268526;
+    transform: translateX(-50%);
+    z-index: -2;
+    top: 40px;
+
+}
+.leaf:nth-of-type(2) {
+    transform: translate(-50%, 12px) rotate(75deg) scale(0.8);
+    z-index: -1;
+    filter: brightness(0.95);
+}
+.leaf:nth-of-type(3) {
+    transform: translate(-50%, 12px)  rotate(-75deg) scale(0.8);
+    z-index: -1;
+    filter: brightness(0.95);
+}
+
+
+
+.steak_outer {
+    /*border-radius: 31% 69% 27% 13% / 55% 48% 30% 28%;*/
+    border-radius: 29% 71% 10% 10% / 62% 82% 18% 38% ;
+    width: 500px;
+    height: 200px;
+    background: repeating-linear-gradient(30deg, transparent 0px, transparent var(--offset_1), var(--steak_darker_color) var(--offset_1), var(--steak_darker_color) var(--offset_2)), repeating-linear-gradient(-30deg, transparent 0px, transparent var(--offset_1), var(--steak_darker_color) var(--offset_1), var(--steak_darker_color) var(--offset_2)) #934E31;
+    /*transform: skewX(-20deg);*/
+    border: 10px solid var(--steak_darker_color);
+    box-shadow: 0 50px 0 0 var(--steak_body_color), 0 30px 0 0 var(--steak_body_color), 0 10px 0 0 var(--steak_body_color);
+}
+
+.dish {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-20px);
+}
+
+.dish:before {
+    content: "";
+    box-sizing: border-box;
+    /*display: block;*/
+    position: absolute;
+    z-index: 0;
+    background: #f5f5f5;
+    border-radius: 50%;
+    width: 750px;
+    aspect-ratio: 2/1;
+    left: 50%;
+    top: 62%;
+    transform: translate(-50%, -50%);
+    border: solid white;
+    border-width: 40px 60px;
+    display: block;
+    justify-content: center;
+}
+
+.dish::after {
+    z-index: -4;
+    content: "";
+    border-radius: 50%;
+    background: #e3e3e3;
+    display: block;
+    width: 500px;
+    height: 200px;
+    position: relative;
+    top: 135px;
+}
+
+@keyframes pulse {
+    0% {
+
+    }
+
+    50% {
+        transform: scale(0.95, 1.05);
+    }
+}
